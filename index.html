@@ -1,98 +1,266 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Site Web Personnel</title>
-    <link rel="stylesheet" type="text/css" href="styleaccuil.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ghofrane Triki - Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    :root {
+      --primary: #e21ab6;
+      --secondary: #ff66b2;
+      --bg: #fdfdfd;
+      --dark: #1a1a1a;
+      --gray: #666;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+
+    body {
+      background: var(--bg);
+      color: var(--dark);
+      scroll-behavior: smooth;
+    }
+
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(8px);
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 5%;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    header h1 { color: var(--primary); font-size: 1.5rem; }
+    nav ul { display: flex; list-style: none; gap: 2rem; }
+    nav a { text-decoration: none; color: var(--dark); font-weight: 500; transition: .3s; }
+    nav a:hover { color: var(--primary); }
+
+    section {
+      padding: 5rem 10%;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .hero {
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #764ba2, #667eea);
+      color: white;
+      text-align: center;
+    }
+
+    .hero h2 { font-size: 3rem; }
+    .hero p { font-size: 1.2rem; margin-top: 1rem; }
+    .btn {
+      display: inline-block;
+      background: white;
+      color: var(--primary);
+      padding: 1rem 2rem;
+      margin-top: 2rem;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: .3s;
+    }
+    .btn:hover { background: var(--primary); color: white; }
+
+    .social {
+      margin-top: 2rem;
+      display: flex; gap: 1rem; justify-content: center;
+    }
+    .social a {
+      width: 45px; height: 45px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      color: white;
+      transition: .3s;
+    }
+    .social a:hover { background: white; color: var(--primary); transform: translateY(-5px); }
+
+    h3.section-title {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      color: var(--primary);
+      position: relative;
+    }
+    h3.section-title::after {
+      content: '';
+      position: absolute;
+      width: 80px; height: 3px;
+      background: var(--secondary);
+      bottom: -8px; left: 50%; transform: translateX(-50%);
+    }
+
+    .about p { color: var(--gray); margin-bottom: 1rem; }
+
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px,1fr));
+      gap: 1rem;
+    }
+    .skill {
+      background: #fff;
+      border-radius: 10px;
+      text-align: center;
+      padding: 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      transition: .3s;
+    }
+    .skill:hover { transform: translateY(-5px); }
+    .skill i { font-size: 2rem; color: var(--primary); }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .project {
+      background: #fff;
+      border-radius: 10px;
+      padding: 1.5rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: .3s;
+    }
+    .project:hover { transform: translateY(-8px); }
+    .project h4 { color: var(--primary); margin-bottom: .5rem; }
+
+    .timeline {
+      border-left: 3px solid var(--secondary);
+      margin-left: 1rem;
+      padding-left: 2rem;
+    }
+    .timeline-item {
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -1.1rem;
+      top: .4rem;
+      width: 12px; height: 12px;
+      background: var(--primary);
+      border-radius: 50%;
+    }
+    .timeline h4 { color: var(--primary); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    .contact-item {
+      display: flex; align-items: center; gap: 1rem;
+      background: #fff; border-radius: 10px; padding: 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+    .contact-item i { font-size: 1.8rem; color: var(--primary); }
+
+    footer {
+      text-align: center;
+      background: var(--dark);
+      color: white;
+      padding: 1.5rem;
+    }
+
+    @media(max-width:768px){
+      header ul { display: none; }
+      .hero h2 { font-size: 2.2rem; }
+    }
+  </style>
 </head>
-<body class="acceuil">
-    <section class="ghofrane">
-        <div class="main-width">
-            <header>
-                <div class="logo">
-                    <img width="50px"src="images/logo.jpg">
-                </div>
-                <nav>
-                  
-                    <ul class="nav-list">
-                        <li><a href="acceuil.html" id="courante">accueil</a></li>
-                        <li><a href="à propos.html">à propos</a></li>
-                        <li><a><div class="dropdown">
-                            <button class="dropbtn">portfolio</button>
-                            <div class="dropdown-content">
-                              <a href="mon parcours.html">mon parcours</a>
-                              <a href="compétences informatiques.html">compétences informatiques</a>
-                              <a href="stages réalisés.html">stages réalisés</a>
-                              <a href="evennements scientifiques.html">evennements scientifiques</a>
-                              <a href="matieres et projets.html">matieres et projets</a>
-                              <a href="iit.html">"iit"</a>
-                            </div>
-                            </a>
-                          </div>
-                        </li>
-                        <li><a href="passions.html">passions</a></li>
-                        <li><a href="quiz.html">quiz</a></li>
-                        <li class="btn"><a href="contact.html">contact</a></li>
+<body>
+  <header>
+    <h1>Ghofrane Triki</h1>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
+  <section class="hero" id="home">
+    <h2>Ghofrane Triki</h2>
+    <p>Computer Engineering Student | Full-Stack Developer | BI Enthusiast</p>
+    <a href="#contact" class="btn">Contact Me</a>
+    <div class="social">
+      <a href="https://github.com/ghofranetriki17"><i class="fab fa-github"></i></a>
+      <a href="https://linkedin.com/in/ghofrane-triki-51233b2b0"><i class="fab fa-linkedin"></i></a>
+      <a href="mailto:ghofrane.triki.17@gmail.com"><i class="fas fa-envelope"></i></a>
+    </div>
+  </section>
 
-                    </ul>
-                </nav>
-            </header>
-        
-        
-        <div class="container">
-            <div class="ghofintro">
-                <h3>salut!</h3>
-                <h1>Je suis <span class="input"></span></h1>
-                <p> Bienvenue sur mon site personnel, un espace dédié à partager mes passions, découvertes et créations. Explorez et plongez dans l'univers qui me définit.</p> 
-                <div class="social">
-                    <a href="https://www.facebook.com/profile.php?id=100082579231803&mibextid=LQQJ4d" target="_blank"><i class="fa-brands fa-square-facebook"></i></a>
-                    <a href="https://www.tiktok.com/@nails.artriki.17?_t=8iVT6sIT46A&_r=1" target="_blank"><i class="fa-brands fa-square-instagram"></i></a>
-                    <a href="https://tn.linkedin.com/in/triki-ghofrane-042a22285" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="https://youtube.com/@Nails.artriki.17?si=oLDbD9i9zIvlg1LM" target="_blank"><i class="fa-brands fa-youtube"></i></a>
-                    <a href="images/snap qr code.jpg" target="_blank"><i class="fa-brands fa-square-snapchat"></i></a>
-                    <a href="images/whatsapp qr code.jpg" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+  <section id="about" class="about">
+    <h3 class="section-title">About Me</h3>
+    <p>I'm a Computer Engineering student at IIT Sfax, majoring in Software Engineering and Business Intelligence with a focus on Security.</p>
+    <p>Passionate about web & mobile development, BI systems, and machine learning, I enjoy creating innovative solutions and exploring new technologies.</p>
+    <p>Currently seeking opportunities to contribute to challenging projects and strengthen my technical expertise.</p>
+  </section>
 
-                </div>
-                <button type="button" onclick="window.location.href='à propos.html'">savoir plus</button>
-            </div>
-        </div>
-            
-      
-       
+  <section id="skills">
+    <h3 class="section-title">Skills</h3>
+    <div class="skills">
+      <div class="skill"><i class="fab fa-react"></i><p>React / React Native</p></div>
+      <div class="skill"><i class="fab fa-angular"></i><p>Angular</p></div>
+      <div class="skill"><i class="fab fa-laravel"></i><p>Laravel</p></div>
+      <div class="skill"><i class="fab fa-python"></i><p>Python / ML</p></div>
+      <div class="skill"><i class="fas fa-database"></i><p>MySQL / SQL Server</p></div>
+      <div class="skill"><i class="fas fa-chart-line"></i><p>Power BI / SSIS / SSAS</p></div>
+    </div>
+  </section>
 
-    </section>
-</section>
-<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-<script>
-    var typed = new Typed(".input", {
-        strings: ["Triki Ghofrane", "Future ingénieure", "Artiste des ongles", "Dessinatrice amatrice", "Conteuse amatrice", "Artiste polyvalente..."],
-        typeSpeed: 70,  // Réglage de la vitesse de frappe, plus le chiffre est bas, plus c'est lent
-        backSpeed: 50,  // Réglage de la vitesse de suppression, de même, plus le chiffre est bas, plus c'est lent
-        loop: true      // Permet à l'animation de boucler indéfiniment
-    });
-</script>
+  <section id="projects">
+    <h3 class="section-title">Projects</h3>
+    <div class="projects-grid">
+      <div class="project"><h4>Gym Management App</h4><p>Full-stack mobile app using React Native, Laravel & MySQL.</p></div>
+      <div class="project"><h4>FimoChic E-Commerce</h4><p>Complete online store with product & sales management.</p></div>
+      <div class="project"><h4>Business Intelligence System</h4><p>ETL, OLAP, and Power BI dashboards for e-commerce analytics.</p></div>
+      <div class="project"><h4>NexiQuest Learning Platform</h4><p>Interactive educational platform built with Laravel Blade.</p></div>
+      <div class="project"><h4>Version Control (C)</h4><p>Git-like software managing snapshots and hashes in C.</p></div>
+    </div>
+  </section>
 
+  <section id="experience">
+    <h3 class="section-title">Experience</h3>
+    <div class="timeline">
+      <div class="timeline-item">
+        <h4>Mobile Developer Intern - Exadev (2025)</h4>
+        <p>Developed a full mobile app for gym management using React Native & Laravel.</p>
+      </div>
+      <div class="timeline-item">
+        <h4>PFA Intern - Eventizer (2025)</h4>
+        <p>Built NexiQuest education platform with interactive learning features.</p>
+      </div>
+      <div class="timeline-item">
+        <h4>Web Developer Intern - Exadev (2024)</h4>
+        <p>Created FimoChic e-commerce platform with Laravel & JavaScript.</p>
+      </div>
+      <div class="timeline-item">
+        <h4>Student - IIT Sfax (2023–Present)</h4>
+        <p>Major in Software Engineering & Business Intelligence.</p>
+      </div>
+    </div>
+  </section>
 
+  <section id="contact">
+    <h3 class="section-title">Contact</h3>
+    <div class="contact-grid">
+      <div class="contact-item"><i class="fas fa-envelope"></i><div><h4>Email</h4><p>ghofrane.triki.17@gmail.com</p></div></div>
+      <div class="contact-item"><i class="fas fa-phone"></i><div><h4>Phone</h4><p>+216 25 141 113</p></div></div>
+      <div class="contact-item"><i class="fas fa-map-marker-alt"></i><div><h4>Location</h4><p>Sfax, Tunisia</p></div></div>
+    </div>
+  </section>
 
-
-
-
-
-
-
-<footer>
-    <p>&copy; 2023 Ghofrane Triki | Créatrice, Rêveuse et Exploratrice de la Vie</p>
-</footer>
-
+  <footer>
+    <p>© 2025 Ghofrane Triki | Built with passion 💜</p>
+  </footer>
 </body>
 </html>
-
-
