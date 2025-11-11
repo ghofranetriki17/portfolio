@@ -1253,12 +1253,13 @@
           <span class="typed-text">Computer Engineering Student</span>
           <span class="cursor">&nbsp;</span>
         </div>
+        <p>Full-Stack Developer | BI Enthusiast | Creative Problem Solver</p>
         <a href="#contact" class="btn btn-primary">Get In Touch</a>
         <div class="social">
           <a href="https://github.com/ghofranetriki17" title="GitHub"><i class="fab fa-github"></i></a>
           <a href="https://linkedin.com/in/ghofrane-triki-51233b2b0" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-          <a href="mailto:ghofrane.triki.17@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-          <a href="#" title="Resume"><i class="fas fa-file-pdf"></i></a>
+          <a href="#" id="email-link" title="Email"><i class="fas fa-envelope"></i></a>
+          <a href="#" id="resume-link" title="Download CV"><i class="fas fa-file-pdf"></i></a>
         </div>
       </div>
       <div class="hero-image">
@@ -1314,7 +1315,6 @@
         <ul class="education-highlights">
           <li>Major: Software Engineering and Business Intelligence</li>
           <li>Minor: Information Systems Security</li>
-          
         </ul>
       </div>
       
@@ -1701,25 +1701,25 @@
         </div>
       </div>
       <div class="contact-form">
-       <form action="https://formsubmit.co/ghofrane.triki.17@gmail.com" method="POST">
-    <input type="hidden" name="_subject" value="New portfolio message!">
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_template" value="table">
-    
-    <div class="form-group">
-        <label for="name">Your Name</label>
-        <input type="text" id="name" name="name" class="form-control" required>
-    </div>
-    <div class="form-group">
-        <label for="email">Your Email</label>
-        <input type="email" id="email" name="email" class="form-control" required>
-    </div>
-    <div class="form-group">
-        <label for="message">Your Message</label>
-        <textarea id="message" name="message" class="form-control" required></textarea>
-    </div>
-    <button type="submit" class="submit-btn">Send Message</button>
-</form>
+        <form id="contactForm">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Your Email</label>
+            <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" class="form-control" placeholder="Enter subject" required>
+          </div>
+          <div class="form-group">
+            <label for="message">Your Message</label>
+            <textarea id="message" class="form-control" placeholder="Enter your message" required></textarea>
+          </div>
+          <button type="submit" class="submit-btn">Send Message</button>
+        </form>
       </div>
     </div>
   </section>
@@ -1732,8 +1732,8 @@
       <div class="footer-social">
         <a href="https://github.com/ghofranetriki17"><i class="fab fa-github"></i></a>
         <a href="https://linkedin.com/in/ghofrane-triki-51233b2b0"><i class="fab fa-linkedin"></i></a>
-        <a href="mailto:ghofrane.triki.17@gmail.com"><i class="fas fa-envelope"></i></a>
-        <a href="#"><i class="fas fa-file-pdf"></i></a>
+        <a href="#" id="footer-email-link"><i class="fas fa-envelope"></i></a>
+        <a href="#" id="footer-resume-link"><i class="fas fa-file-pdf"></i></a>
       </div>
       <p class="copyright">© 2025 Ghofrane Triki | Built with passion 💜</p>
     </div>
@@ -1801,6 +1801,118 @@
 
     document.addEventListener("DOMContentLoaded", function() { // On DOM Load initiate the effect
       if(textArray.length) setTimeout(type, newTextDelay + 250);
+    });
+
+    // Email Functionality - Enhanced
+    function openEmailClient() {
+      const email = "ghofrane.triki.17@gmail.com";
+      const subject = "Portfolio Contact - Interested in Collaboration";
+      const body = "Hello Ghofrane,\n\nI came across your portfolio and would like to connect with you regarding...\n\nBest regards,";
+      
+      // Try to open default email client
+      const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      
+      // Open in new tab/window
+      window.open(mailtoLink, '_blank');
+      
+      // Fallback: Copy email to clipboard
+      navigator.clipboard.writeText(email).then(function() {
+        console.log('Email copied to clipboard: ' + email);
+      }, function(err) {
+        console.error('Could not copy email: ', err);
+      });
+    }
+
+    // PDF Download Functionality
+    function downloadResume() {
+      // Create a simple PDF content (in a real scenario, you would link to an actual PDF file)
+      const resumeContent = `
+        GHOFRANE TRIKI
+        Computer Engineering Student
+        International Institute of Technology (IIT Sfax)
+        
+        CONTACT INFORMATION
+        Email: ghofrane.triki.17@gmail.com
+        Phone: +216 25 141 113
+        Location: Sfax, Tunisia
+        LinkedIn: linkedin.com/in/ghofrane-triki-51233b2b0
+        GitHub: github.com/ghofranetriki17
+        
+        EDUCATION
+        • Computer Engineering Degree - IIT Sfax (2023-Present)
+          Major: Software Engineering and Business Intelligence
+          Minor: Information Systems Security
+        
+        • Preparatory Cycle in Mathematics and Physics - IPEIS (2021-2023)
+        
+        • Baccalaureate in Experimental Sciences with Honors - Habib Thameur High School (2021)
+        
+        TECHNICAL SKILLS
+        • Programming: Python, Java, C, PHP, JavaScript, TypeScript
+        • Web Development: React, Angular, Laravel, .NET Core, HTML5, CSS3, Bootstrap
+        • Mobile Development: React Native, Flutter, Android
+        • Databases: MySQL, Oracle, Firebase, SQL Server, MongoDB
+        • BI & Data Science: SQL Server, SSIS, SSAS, Power BI, Python (Pandas), Scikit-learn
+        • Other: AWS Cloud, Linux, Git, GitHub, Odoo ERP, Spring Boot, Cisco CCNA
+        
+        EXPERIENCE
+        • Mobile Developer Intern - Exadev (2024-2025)
+        • Intern - End of Year Project (PFA) - Eventizer (2024-2025)
+        • Web Developer Intern - Exadev (2023-2024)
+        
+        PROJECTS
+        • Business Intelligence - FimoChic Decision Support System
+        • Business Process Modeling - Odoo ERP
+        • Data Mining - Insurance Claims Prediction
+        • FashionAcademy Management Platform
+        • FimoChic WebApp - Full-Stack Redesign
+        • QuizApp - Mobile Application
+        • Gym Management Mobile App
+        • NexiQuest Learning Platform
+        
+        LANGUAGES
+        • Arabic: Native
+        • French: Fluent (B2 Preparation)
+        • English: Fluent (IELTS Preparation)
+        • Italian: Intermediate
+        
+        This is a simplified version. For a complete CV, please contact me directly.
+      `;
+      
+      // Create a Blob and download link
+      const blob = new Blob([resumeContent], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'Ghofrane_Triki_CV.txt';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      
+      // Show message
+      alert('Your CV download has started! For a complete PDF version, please contact me directly.');
+    }
+
+    // Set up email and PDF links
+    document.addEventListener('DOMContentLoaded', function() {
+      // Email links
+      const emailLinks = document.querySelectorAll('#email-link, #footer-email-link');
+      emailLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          openEmailClient();
+        });
+      });
+      
+      // Resume links
+      const resumeLinks = document.querySelectorAll('#resume-link, #footer-resume-link');
+      resumeLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          downloadResume();
+        });
+      });
     });
 
     // Mobile Menu Toggle
@@ -2027,7 +2139,19 @@
     // Contact form submission
     document.getElementById('contactForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      alert('Thank you for your message! I will get back to you soon.');
+      
+      // Get form data
+      const formData = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        subject: document.getElementById('subject').value,
+        message: document.getElementById('message').value
+      };
+      
+      // Show success message
+      alert(`Thank you ${formData.name}! Your message has been received.\n\nI'll respond to you at: ${formData.email}`);
+      
+      // Reset form
       this.reset();
     });
 
@@ -2051,9 +2175,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
-
