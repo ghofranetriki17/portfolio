@@ -52,6 +52,30 @@
       text-align: center;
     }
 
+    .hero-content {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      max-width: 900px;
+    }
+
+    .hero-text {
+      flex: 1;
+    }
+
+    .hero-image {
+      flex: 0 0 200px;
+    }
+
+    .hero-image img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid white;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
     .hero h2 { font-size: 3rem; }
     .hero p { font-size: 1.2rem; margin-top: 1rem; }
     .btn {
@@ -124,9 +148,85 @@
       padding: 1.5rem;
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
       transition: .3s;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
     }
     .project:hover { transform: translateY(-8px); }
     .project h4 { color: var(--primary); margin-bottom: .5rem; }
+    .project p { color: var(--gray); font-size: 0.9rem; }
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    .project-tag {
+      background: rgba(226, 26, 182, 0.1);
+      color: var(--primary);
+      padding: 0.3rem 0.7rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      z-index: 2000;
+      overflow-y: auto;
+    }
+    .modal-content {
+      background: white;
+      margin: 5% auto;
+      padding: 2rem;
+      border-radius: 10px;
+      width: 80%;
+      max-width: 700px;
+      position: relative;
+      animation: modalFade 0.3s;
+    }
+    @keyframes modalFade {
+      from { opacity: 0; transform: translateY(-50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .close-modal {
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--gray);
+    }
+    .close-modal:hover { color: var(--primary); }
+    .modal-title {
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    .modal-subtitle {
+      color: var(--secondary);
+      margin-bottom: 1rem;
+    }
+    .modal-highlights {
+      list-style-type: none;
+      margin: 1rem 0;
+    }
+    .modal-highlights li {
+      margin-bottom: 0.5rem;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+    .modal-highlights li:before {
+      content: "•";
+      color: var(--primary);
+      position: absolute;
+      left: 0;
+    }
 
     .timeline {
       border-left: 3px solid var(--secondary);
@@ -170,6 +270,10 @@
     @media(max-width:768px){
       header ul { display: none; }
       .hero h2 { font-size: 2.2rem; }
+      .hero-content {
+        flex-direction: column;
+        text-align: center;
+      }
     }
   </style>
 </head>
@@ -188,13 +292,20 @@
   </header>
 
   <section class="hero" id="home">
-    <h2>Ghofrane Triki</h2>
-    <p>Computer Engineering Student | Full-Stack Developer | BI Enthusiast</p>
-    <a href="#contact" class="btn">Contact Me</a>
-    <div class="social">
-      <a href="https://github.com/ghofranetriki17"><i class="fab fa-github"></i></a>
-      <a href="https://linkedin.com/in/ghofrane-triki-51233b2b0"><i class="fab fa-linkedin"></i></a>
-      <a href="mailto:ghofrane.triki.17@gmail.com"><i class="fas fa-envelope"></i></a>
+    <div class="hero-content">
+      <div class="hero-text">
+        <h2>Ghofrane Triki</h2>
+        <p>Computer Engineering Student | Full-Stack Developer | BI Enthusiast</p>
+        <a href="#contact" class="btn">Contact Me</a>
+        <div class="social">
+          <a href="https://github.com/ghofranetriki17"><i class="fab fa-github"></i></a>
+          <a href="https://linkedin.com/in/ghofrane-triki-51233b2b0"><i class="fab fa-linkedin"></i></a>
+          <a href="mailto:ghofrane.triki.17@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="https://media.licdn.com/dms/image/v2/D5635AQFmGtb1XWKyUg/profile-framedphoto-shrink_400_400/B56ZpenM4kHkAc-/0/1762523926423?e=1763492400&v=beta&t=ziXm-RHXNaNe4P2OuHGIMPzoEJvVfFzxM-DvSCK2OZQ" alt="Ghofrane Triki">
+      </div>
     </div>
   </section>
 
@@ -214,17 +325,116 @@
       <div class="skill"><i class="fab fa-python"></i><p>Python / ML</p></div>
       <div class="skill"><i class="fas fa-database"></i><p>MySQL / SQL Server</p></div>
       <div class="skill"><i class="fas fa-chart-line"></i><p>Power BI / SSIS / SSAS</p></div>
+      <div class="skill"><i class="fab fa-aws"></i><p>AWS Cloud</p></div>
+      <div class="skill"><i class="fab fa-git-alt"></i><p>Git / GitHub</p></div>
     </div>
   </section>
 
   <section id="projects">
     <h3 class="section-title">Projects</h3>
     <div class="projects-grid">
-      <div class="project"><h4>Gym Management App</h4><p>Full-stack mobile app using React Native, Laravel & MySQL.</p></div>
-      <div class="project"><h4>FimoChic E-Commerce</h4><p>Complete online store with product & sales management.</p></div>
-      <div class="project"><h4>Business Intelligence System</h4><p>ETL, OLAP, and Power BI dashboards for e-commerce analytics.</p></div>
-      <div class="project"><h4>NexiQuest Learning Platform</h4><p>Interactive educational platform built with Laravel Blade.</p></div>
-      <div class="project"><h4>Version Control (C)</h4><p>Git-like software managing snapshots and hashes in C.</p></div>
+      <!-- Academic Projects -->
+      <div class="project" data-project="bi-fimochic">
+        <h4>Business Intelligence - FimoChic DSS</h4>
+        <p>Complete decision support system for e-commerce analytics</p>
+        <div class="project-tags">
+          <span class="project-tag">SQL Server</span>
+          <span class="project-tag">SSIS</span>
+          <span class="project-tag">SSAS</span>
+          <span class="project-tag">Power BI</span>
+        </div>
+      </div>
+      
+      <div class="project" data-project="odoo-erp">
+        <h4>Business Process Modeling - Odoo ERP</h4>
+        <p>Purchasing and sales processes modeling in ERP system</p>
+        <div class="project-tags">
+          <span class="project-tag">Odoo ERP</span>
+          <span class="project-tag">Process Modeling</span>
+        </div>
+      </div>
+      
+      <div class="project" data-project="data-mining">
+        <h4>Data Mining - Insurance Claims Prediction</h4>
+        <p>Predictive analysis of insurance data using ML</p>
+        <div class="project-tags">
+          <span class="project-tag">Python</span>
+          <span class="project-tag">Machine Learning</span>
+          <span class="project-tag">Pandas</span>
+          <span class="project-tag">Scikit-learn</span>
+        </div>
+      </div>
+      
+      <div class="project" data-project="fashion-academy">
+        <h4>FashionAcademy Management Platform</h4>
+        <p>Web platform for fashion academy management</p>
+        <div class="project-tags">
+          <span class="project-tag">Angular</span>
+          <span class="project-tag">Firebase</span>
+          <span class="project-tag">JSON Server</span>
+        </div>
+      </div>
+      
+      <div class="project" data-project="fimochic-webapp">
+        <h4>FimoChic WebApp - Full-Stack Redesign</h4>
+        <p>Complete redesign of e-commerce platform</p>
+        <div class="project-tags">
+          <span class="project-tag">React</span>
+          <span class="project-tag">.NET Core</span>
+          <span class="project-tag">REST API</span>
+        </div>
+      </div>
+      
+      <div class="project" data-project="quiz-app">
+        <h4>QuizApp - Mobile Application</h4>
+        <p>Interactive mobile quiz application</p>
+        <div class="project-tags">
+          <span class="project-tag">Flutter</span>
+          <span class="project-tag">REST API</span>
+        </div>
+      </div>
+      
+      <div class="project" data-project="version-control">
+        <h4>Version Control System (Git-like)</h4>
+        <p>Git-like version control software in C</p>
+        <div class="project-tags">
+          <span class="project-tag">C</span>
+          <span class="project-tag">Bash</span>
+          <span class="project-tag">SHA256</span>
+        </div>
+      </div>
+      
+      <!-- Internship Projects -->
+      <div class="project" data-project="gym-management">
+        <h4>Gym Management Mobile App</h4>
+        <p>Complete mobile application for gym management</p>
+        <div class="project-tags">
+          <span class="project-tag">React Native</span>
+          <span class="project-tag">Laravel</span>
+          <span class="project-tag">MySQL</span>
+        </div>
+      </div>
+      
+      <div class="project" data-project="nexi-quest">
+        <h4>NexiQuest Learning Platform</h4>
+        <p>Online education platform with interactive features</p>
+        <div class="project-tags">
+          <span class="project-tag">Laravel</span>
+          <span class="project-tag">Blade</span>
+          <span class="project-tag">MySQL</span>
+        </div>
+      </div>
+      
+      <div class="project" data-project="fimochic-ecommerce">
+        <h4>FimoChic E-Commerce Website</h4>
+        <p>Complete e-commerce platform with product management</p>
+        <div class="project-tags">
+          <span class="project-tag">Laravel</span>
+          <span class="project-tag">Blade</span>
+          <span class="project-tag">MySQL</span>
+          <span class="project-tag">JavaScript</span>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -232,20 +442,20 @@
     <h3 class="section-title">Experience</h3>
     <div class="timeline">
       <div class="timeline-item">
-        <h4>Mobile Developer Intern - Exadev (2025)</h4>
-        <p>Developed a full mobile app for gym management using React Native & Laravel.</p>
+        <h4>Mobile Developer Intern - Exadev (2024-2025)</h4>
+        <p>Developed a complete mobile application for gym management using React Native for mobile and Laravel for backend. Implemented full-stack architecture and designed MySQL database.</p>
       </div>
       <div class="timeline-item">
-        <h4>PFA Intern - Eventizer (2025)</h4>
-        <p>Built NexiQuest education platform with interactive learning features.</p>
+        <h4>Intern - End of Year Project (PFA) - Eventizer (2024-2025)</h4>
+        <p>Developed the online education platform NexiQuest with Laravel and Blade. Implemented interactive learning features and educational content management.</p>
       </div>
       <div class="timeline-item">
-        <h4>Web Developer Intern - Exadev (2024)</h4>
-        <p>Created FimoChic e-commerce platform with Laravel & JavaScript.</p>
+        <h4>Web Developer Intern - Exadev (2023-2024)</h4>
+        <p>Created FimoChic e-commerce website with complete product and sales management. Implemented inventory management and order processing features with Laravel and JavaScript.</p>
       </div>
       <div class="timeline-item">
-        <h4>Student - IIT Sfax (2023–Present)</h4>
-        <p>Major in Software Engineering & Business Intelligence.</p>
+        <h4>Student - International Institute of Technology (IIT Sfax) (2023–Present)</h4>
+        <p>Major in Software Engineering and Business Intelligence with a focus on Information Systems Security.</p>
       </div>
     </div>
   </section>
@@ -262,5 +472,186 @@
   <footer>
     <p>© 2025 Ghofrane Triki | Built with passion 💜</p>
   </footer>
+
+  <!-- Project Modals -->
+  <div id="project-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h3 class="modal-title" id="modal-project-title">Project Title</h3>
+      <p class="modal-subtitle" id="modal-project-subtitle">Project Subtitle</p>
+      <div id="modal-project-content">
+        <!-- Project details will be inserted here -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Project data
+    const projects = {
+      "bi-fimochic": {
+        title: "Business Intelligence - FimoChic Decision Support System",
+        subtitle: "Academic Project (2024-2025)",
+        content: `
+          <p>Design of a complete decision support system to analyze e-commerce sales and performance.</p>
+          <ul class="modal-highlights">
+            <li>Creation of ETL (Extract, Transform, Load) processes for data integration</li>
+            <li>Development of OLAP cubes for multidimensional analysis</li>
+            <li>Design of interactive dashboards for KPI visualization</li>
+            <li>Technologies: SQL Server, SSIS, SSAS, Power BI</li>
+          </ul>
+        `
+      },
+      "odoo-erp": {
+        title: "Business Process Modeling - Odoo ERP",
+        subtitle: "Academic Project (2024-2025)",
+        content: `
+          <p>Modeling of purchasing and sales processes in an ERP system.</p>
+          <ul class="modal-highlights">
+            <li>Configuration and customization of Odoo modules to meet business needs</li>
+            <li>Workflow optimization and operational process automation</li>
+            <li>Technologies: Odoo ERP</li>
+          </ul>
+        `
+      },
+      "data-mining": {
+        title: "Data Mining Project - Insurance Claims Prediction",
+        subtitle: "Academic Project (2024-2025)",
+        content: `
+          <p>Predictive analysis of insurance data for claims forecasting and insurance parameter optimization.</p>
+          <ul class="modal-highlights">
+            <li>Exploration and preprocessing of complex datasets to identify factors influencing claims</li>
+            <li>Application of advanced machine learning techniques for knowledge extraction</li>
+            <li>Development of predictive models to help insurers better anticipate claims</li>
+            <li>Pattern analysis and optimization of insurance policies based on data</li>
+            <li>Technologies: Python, Machine Learning, Data Mining, Pandas, Scikit-learn</li>
+          </ul>
+        `
+      },
+      "fashion-academy": {
+        title: "FashionAcademy - Management Platform",
+        subtitle: "Academic Project (2024-2025)",
+        content: `
+          <p>Development of a complete web platform to manage a fashion academy.</p>
+          <ul class="modal-highlights">
+            <li>Management of members, trainees, designers, collections and fashion show organization</li>
+            <li>Implementation of Firebase authentication and real-time data storage</li>
+            <li>Technologies: Angular, Firebase, JSON Server</li>
+          </ul>
+        `
+      },
+      "fimochic-webapp": {
+        title: "FimoChic WebApp - Full-Stack Redesign",
+        subtitle: "Academic Project (2024-2025)",
+        content: `
+          <p>Complete redesign of the e-commerce platform with modern architecture.</p>
+          <ul class="modal-highlights">
+            <li>Development of a responsive and high-performance React interface</li>
+            <li>Creation of a robust REST API with .NET Core for the backend</li>
+            <li>Technologies: React, .NET Core, REST API</li>
+          </ul>
+        `
+      },
+      "quiz-app": {
+        title: "QuizApp - Mobile Quiz Application",
+        subtitle: "Academic Project (2024-2025)",
+        content: `
+          <p>Development of an interactive mobile quiz application.</p>
+          <ul class="modal-highlights">
+            <li>Integration of Open Trivia Database API for varied questions</li>
+            <li>Intuitive user interface and engaging game experience</li>
+            <li>Technologies: Flutter, REST API</li>
+          </ul>
+        `
+      },
+      "version-control": {
+        title: "Version Control System (Git-like)",
+        subtitle: "Academic Project (2023-2024)",
+        content: `
+          <p>Development of a version control software inspired by Git in C language.</p>
+          <ul class="modal-highlights">
+            <li>Implementation of snapshot functionality with SHA256 hashing system</li>
+            <li>Creation of a WorkTree system to manage file and directory tree structure</li>
+            <li>Recursive management of project state saving and restoration</li>
+            <li>Advanced manipulation of Linux file system with Bash and C</li>
+            <li>Technologies: C, Bash, SHA256, Data structures (linked lists), Unix file management</li>
+          </ul>
+        `
+      },
+      "gym-management": {
+        title: "Gym Management Mobile App",
+        subtitle: "Internship Project - Exadev (2024-2025)",
+        content: `
+          <p>Development of a complete mobile application for gym management.</p>
+          <ul class="modal-highlights">
+            <li>Implementation of a full-stack architecture with React Native for mobile and Laravel for backend</li>
+            <li>Design and management of MySQL database to handle classes, training programs, users, etc.</li>
+            <li>Technologies: React Native, React, Laravel, MySQL</li>
+          </ul>
+        `
+      },
+      "nexi-quest": {
+        title: "NexiQuest Learning Platform",
+        subtitle: "Internship Project - Eventizer (2024-2025)",
+        content: `
+          <p>Development of the online education platform NexiQuest.</p>
+          <ul class="modal-highlights">
+            <li>Implementation of interactive learning features and educational content management</li>
+            <li>Contribution to improving user interface and learning experience</li>
+            <li>Technologies: Laravel, Blade, MySQL</li>
+          </ul>
+        `
+      },
+      "fimochic-ecommerce": {
+        title: "FimoChic E-Commerce Website",
+        subtitle: "Internship Project - Exadev (2023-2024)",
+        content: `
+          <p>Development of Fimochic e-commerce website with complete product and sales management.</p>
+          <ul class="modal-highlights">
+            <li>Creation of an intuitive client interface to improve user experience</li>
+            <li>Implementation of inventory management and order processing features</li>
+            <li>Advanced customization with JavaScript and use of Meta Spark Studio for interactive features</li>
+            <li>Technologies: Laravel, Blade, MySQL, JavaScript, Meta Spark Studio</li>
+          </ul>
+        `
+      }
+    };
+
+    // Modal functionality
+    const modal = document.getElementById('project-modal');
+    const modalTitle = document.getElementById('modal-project-title');
+    const modalSubtitle = document.getElementById('modal-project-subtitle');
+    const modalContent = document.getElementById('modal-project-content');
+    const closeBtn = document.querySelector('.close-modal');
+
+    // Add click event to all project cards
+    document.querySelectorAll('.project').forEach(project => {
+      project.addEventListener('click', () => {
+        const projectId = project.getAttribute('data-project');
+        const projectData = projects[projectId];
+        
+        if (projectData) {
+          modalTitle.textContent = projectData.title;
+          modalSubtitle.textContent = projectData.subtitle;
+          modalContent.innerHTML = projectData.content;
+          modal.style.display = 'block';
+          document.body.style.overflow = 'hidden';
+        }
+      });
+    });
+
+    // Close modal when clicking X
+    closeBtn.addEventListener('click', () => {
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    });
+
+    // Close modal when clicking outside
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+    });
+  </script>
 </body>
 </html>
