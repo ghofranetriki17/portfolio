@@ -169,6 +169,59 @@
       font-size: 0.8rem;
     }
 
+    /* Education Styles */
+    .education-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .education-item {
+      background: #fff;
+      border-radius: 10px;
+      padding: 1.5rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: .3s;
+    }
+    .education-item:hover { transform: translateY(-5px); }
+    .education-item h4 { color: var(--primary); margin-bottom: .5rem; }
+    .education-item .institution { color: var(--secondary); font-weight: 500; margin-bottom: .5rem; }
+    .education-item .date { color: var(--gray); font-style: italic; margin-bottom: 1rem; }
+    .education-highlights {
+      list-style-type: none;
+    }
+    .education-highlights li {
+      margin-bottom: 0.5rem;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+    .education-highlights li:before {
+      content: "•";
+      color: var(--primary);
+      position: absolute;
+      left: 0;
+    }
+
+    /* Timeline Styles */
+    .timeline {
+      border-left: 3px solid var(--secondary);
+      margin-left: 1rem;
+      padding-left: 2rem;
+    }
+    .timeline-item {
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -1.1rem;
+      top: .4rem;
+      width: 12px; height: 12px;
+      background: var(--primary);
+      border-radius: 50%;
+    }
+    .timeline h4 { color: var(--primary); }
+
     /* Modal Styles */
     .modal {
       display: none;
@@ -228,25 +281,62 @@
       left: 0;
     }
 
-    .timeline {
-      border-left: 3px solid var(--secondary);
-      margin-left: 1rem;
-      padding-left: 2rem;
+    /* Extra Activities Styles */
+    .activities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
     }
-    .timeline-item {
-      margin-bottom: 1.5rem;
+    .activity-item {
+      background: #fff;
+      border-radius: 10px;
+      padding: 1.5rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: .3s;
+    }
+    .activity-item:hover { transform: translateY(-5px); }
+    .activity-item h4 { color: var(--primary); margin-bottom: .5rem; }
+    .activity-item .organization { color: var(--secondary); font-weight: 500; margin-bottom: 1rem; }
+    .activity-highlights {
+      list-style-type: none;
+    }
+    .activity-highlights li {
+      margin-bottom: 0.5rem;
       position: relative;
+      padding-left: 1.5rem;
     }
-    .timeline-item::before {
-      content: '';
+    .activity-highlights li:before {
+      content: "•";
+      color: var(--primary);
       position: absolute;
-      left: -1.1rem;
-      top: .4rem;
-      width: 12px; height: 12px;
-      background: var(--primary);
-      border-radius: 50%;
+      left: 0;
     }
-    .timeline h4 { color: var(--primary); }
+
+    /* Skills List Styles */
+    .skills-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+    .skill-category {
+      background: #fff;
+      border-radius: 10px;
+      padding: 1.5rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .skill-category h4 { color: var(--primary); margin-bottom: 1rem; }
+    .skill-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .skill-item {
+      background: rgba(226, 26, 182, 0.1);
+      color: var(--primary);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+    }
 
     .contact-grid {
       display: grid;
@@ -283,9 +373,11 @@
     <nav>
       <ul>
         <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#experience">Experience</a></li>
+        <li><a href="#activities">Activities</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -316,17 +408,111 @@
     <p>Currently seeking opportunities to contribute to challenging projects and strengthen my technical expertise.</p>
   </section>
 
+  <section id="education">
+    <h3 class="section-title">Education</h3>
+    <div class="education-grid">
+      <div class="education-item">
+        <h4>Computer Engineering Degree</h4>
+        <div class="institution">International Institute of Technology (IIT Sfax)</div>
+        <div class="date">2023 - Present</div>
+        <ul class="education-highlights">
+          <li>Major: Software Engineering and Business Intelligence</li>
+          <li>Minor: Information Systems Security</li>
+        </ul>
+      </div>
+      
+      <div class="education-item">
+        <h4>Preparatory Cycle in Mathematics and Physics</h4>
+        <div class="institution">Preparatory Institute for Engineering Studies of Sfax (IPEIS)</div>
+        <div class="date">2023</div>
+        <ul class="education-highlights">
+          <li>Intensive training in Mathematics, Physics and Engineering Sciences</li>
+          <li>Development of analytical and problem-solving skills</li>
+        </ul>
+      </div>
+      
+      <div class="education-item">
+        <h4>Baccalaureate in Experimental Sciences with Honors</h4>
+        <div class="institution">Habib Thameur High School, Sfax</div>
+        <div class="date">2021</div>
+      </div>
+    </div>
+  </section>
+
   <section id="skills">
     <h3 class="section-title">Skills</h3>
-    <div class="skills">
-      <div class="skill"><i class="fab fa-react"></i><p>React / React Native</p></div>
-      <div class="skill"><i class="fab fa-angular"></i><p>Angular</p></div>
-      <div class="skill"><i class="fab fa-laravel"></i><p>Laravel</p></div>
-      <div class="skill"><i class="fab fa-python"></i><p>Python / ML</p></div>
-      <div class="skill"><i class="fas fa-database"></i><p>MySQL / SQL Server</p></div>
-      <div class="skill"><i class="fas fa-chart-line"></i><p>Power BI / SSIS / SSAS</p></div>
-      <div class="skill"><i class="fab fa-aws"></i><p>AWS Cloud</p></div>
-      <div class="skill"><i class="fab fa-git-alt"></i><p>Git / GitHub</p></div>
+    <div class="skills-list">
+      <div class="skill-category">
+        <h4>Programming Languages</h4>
+        <div class="skill-items">
+          <span class="skill-item">Python</span>
+          <span class="skill-item">Java</span>
+          <span class="skill-item">C</span>
+          <span class="skill-item">PHP</span>
+          <span class="skill-item">JavaScript</span>
+        </div>
+      </div>
+      
+      <div class="skill-category">
+        <h4>Web Development</h4>
+        <div class="skill-items">
+          <span class="skill-item">React</span>
+          <span class="skill-item">Angular</span>
+          <span class="skill-item">Laravel</span>
+          <span class="skill-item">.NET Core</span>
+          <span class="skill-item">HTML5</span>
+          <span class="skill-item">CSS3</span>
+          <span class="skill-item">Bootstrap</span>
+          <span class="skill-item">REST API</span>
+        </div>
+      </div>
+      
+      <div class="skill-category">
+        <h4>Mobile Development</h4>
+        <div class="skill-items">
+          <span class="skill-item">React Native</span>
+          <span class="skill-item">Flutter</span>
+        </div>
+      </div>
+      
+      <div class="skill-category">
+        <h4>Databases</h4>
+        <div class="skill-items">
+          <span class="skill-item">MySQL</span>
+          <span class="skill-item">Oracle</span>
+          <span class="skill-item">Firebase</span>
+        </div>
+      </div>
+      
+      <div class="skill-category">
+        <h4>Business Intelligence & Data Science</h4>
+        <div class="skill-items">
+          <span class="skill-item">SQL Server</span>
+          <span class="skill-item">SSIS</span>
+          <span class="skill-item">SSAS</span>
+          <span class="skill-item">Power BI</span>
+          <span class="skill-item">Python (Pandas)</span>
+          <span class="skill-item">Scikit-learn</span>
+          <span class="skill-item">Machine Learning</span>
+          <span class="skill-item">Data Mining</span>
+        </div>
+      </div>
+      
+      <div class="skill-category">
+        <h4>Other Technologies</h4>
+        <div class="skill-items">
+          <span class="skill-item">AWS Cloud</span>
+          <span class="skill-item">Linux</span>
+          <span class="skill-item">Bash Scripting</span>
+          <span class="skill-item">Git</span>
+          <span class="skill-item">GitHub</span>
+          <span class="skill-item">Firebase</span>
+          <span class="skill-item">Odoo ERP</span>
+          <span class="skill-item">Postman</span>
+          <span class="skill-item">Spring Boot</span>
+          <span class="skill-item">Cisco CCNA</span>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -453,9 +639,50 @@
         <h4>Web Developer Intern - Exadev (2023-2024)</h4>
         <p>Created FimoChic e-commerce website with complete product and sales management. Implemented inventory management and order processing features with Laravel and JavaScript.</p>
       </div>
-      <div class="timeline-item">
-        <h4>Student - International Institute of Technology (IIT Sfax) (2023–Present)</h4>
-        <p>Major in Software Engineering and Business Intelligence with a focus on Information Systems Security.</p>
+    </div>
+  </section>
+
+  <section id="activities">
+    <h3 class="section-title">Extra-Academic Activities</h3>
+    <div class="activities-grid">
+      <div class="activity-item">
+        <h4>Entrepreneurship</h4>
+        <div class="organization">Fimochic - Creation and management of a craft business</div>
+      </div>
+      
+      <div class="activity-item">
+        <h4>IIT Competitions (2023-2024)</h4>
+        <ul class="activity-highlights">
+          <li>Winner of the theater competition "Together on Stage"</li>
+          <li>Winner of the slam competition "The Golden Pen"</li>
+          <li>3rd place in the mathematics competition "The Mathematical Labyrinth"</li>
+        </ul>
+      </div>
+      
+      <div class="activity-item">
+        <h4>Certifications</h4>
+        <div class="organization">CCNAv7: Introduction to Networks</div>
+        <p>Cisco Networking Academy - September 30, 2024</p>
+      </div>
+      
+      <div class="activity-item">
+        <h4>Personal Skills</h4>
+        <p>Creativity • Problem Solving • Punctuality • Critical Thinking • Leadership • Teamwork</p>
+      </div>
+      
+      <div class="activity-item">
+        <h4>Languages</h4>
+        <ul class="activity-highlights">
+          <li><strong>Arabic:</strong> Native language</li>
+          <li><strong>French:</strong> Fluent (B2 Preparation)</li>
+          <li><strong>English:</strong> Fluent (IELTS Preparation)</li>
+          <li><strong>Italian:</strong> Intermediate (Baccalaureate Option)</li>
+        </ul>
+      </div>
+      
+      <div class="activity-item">
+        <h4>Interests</h4>
+        <p>Creative Programming • Art and Design • Zumba</p>
       </div>
     </div>
   </section>
